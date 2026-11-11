@@ -1,0 +1,12 @@
+Se han introducido 3 bugs intencionados (típicos despistes humanos o alucinaciones de la IA):
+
+    Un bug de validación (Datos incorrectos): Usar && en lugar de ||.
+    Un bug de operación CRUD (Actualización incompleta): Olvidar un campo en el UPDATE.
+    Un bug de estado HTTP (Caso límite): No devolver 404 al borrar algo que no existe.
+
+Además, se ha añadido un pequeño ajuste al final del archivo (module.exports = app) que es imprescindible para que herramientas como Jest y Supertest 
+puedan ejecutar pruebas funcionales sin bloquear la consola.
+
+
+Instalamos las librerias de testing:
+npm install --save-dev jest supertest

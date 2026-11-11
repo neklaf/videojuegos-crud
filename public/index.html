@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel CRUD - Videojuegos y Desarrolladoras</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px auto; max-width: 1050px; background: #fafafa; }
+        .seccion { background: #fff; padding: 15px; margin-bottom: 25px; border: 1px solid #ccc; border-radius: 4px; }
+        h2 { margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        form { margin-bottom: 15px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+        input, select, button { padding: 6px 10px; font-size: 14px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background: #eee; }
+        .btn-del { color: white; background: #d9534f; border: none; cursor: pointer; border-radius: 2px; }
+        .btn-edit { color: white; background: #0275d8; border: none; cursor: pointer; border-radius: 2px; }
+        .cancelar { background: #6c757d; color: white; display: none; }
+    </style>
+</head>
+<body>
+
+    <h1>Administración de Videojuegos y Estudios</h1>
+
+    <!-- 1. GESTIÓN DE ESTUDIOS -->
+    <div class="seccion">
+        <h2>1. Gestión de Desarrolladoras (Estudios)</h2>
+        <form id="form-estudio">
+            <input type="hidden" id="estudio-id">
+            <input type="text" id="estudio-nombre" placeholder="Nombre Estudio" required>
+            <input type="text" id="estudio-pais" placeholder="País" required>
+            <button type="submit" id="btn-estudio">Guardar Estudio</button>
+            <button type="button" id="btn-cancel-estudio" class="cancelar">Cancelar Edición</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th width="10%">ID</th>
+                    <th width="45%">Nombre</th>
+                    <th width="25%">País</th>
+                    <th width="20%">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-estudios"></tbody>
+        </table>
+    </div>
+
+    <!-- 2. GESTIÓN DE VIDEOJUEGOS -->
+    <div class="seccion">
+        <h2>2. Gestión de Videojuegos</h2>
+        
+        <!-- Formulario con input de tipo fecha -->
+        <form id="form-juego">
+            <input type="hidden" id="juego-id">
+            <input type="text" id="juego-titulo" placeholder="Título del juego" required>
+            <input type="date" id="juego-fecha" title="Fecha de Lanzamiento" required>
+            <select id="juego-estudio" required>
+                <option value="">-- Seleccionar Desarrollador --</option>
+            </select>
+            <button type="submit" id="btn-juego">Guardar Juego</button>
+            <button type="button" id="btn-cancel-juego" class="cancelar">Cancelar Edición</button>
+        </form>
+
+        <!-- Filtro -->
+        <div style="margin-top: 15px;">
+            <label><strong>Filtrar por estudio:</strong> </label>
+            <select id="filtro-estudio">
+                <option value="">-- Todos los Estudios --</option>
+            </select>
+            <button type="button" id="btn-filtrar">Filtrar</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th width="8%">ID</th>
+                    <th width="37%">Título</th>
+                    <th width="15%">Fecha Lanzamiento</th>
+                    <th width="20%">Desarrolladora</th>
+                    <th width="20%">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-juegos"></tbody>
+        </table>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
